@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian Detail</title>
+    <style>
+        .centered-name {
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            color: #1175D2;
+            margin-top: 70px;
+        }
+        .title {
+            text-align: center;
+            color: #1175D2;
+
+            text-decoration: none;
+        }
+        .centered-name{
+            color: #1175D2;
+        }
+        .children-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: auto;
+            align-items: center;
+            font-family: 'Kumbh Sans', sans-serif;
+
+        }
+        .child-card {
+            border: 2px solid pink;
+            margin: 10px;
+            text-align: center;
+            width: 500px;
+            background-color: white;
+            margin-top: 20px;
+        }
+        .back-arrow {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 50px;
+            color: #1175D2;
+            text-decoration: none;
+        }
+        .add-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: pink;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            font-size: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ 
+    <a href="{% url 'retrieve_guardian' %}" class="back-arrow">&#8592;</a>
+    <div class="centered-name">
+        <h1>{{ guardian.first_name }} {{ guardian.last_name }}</h1>
+    </div>
+    <h2 class="title">Children:</h2>
+    <div class="children-container">
+        {% for child_data in children_with_age %}
+            <div class="child-card">
+                <h3><a href="{% url 'immunization_detail' child_data.child.id %}">{{ child_data.child.first_name }} {{ child_data.child.last_name }}</a></h3>
+                <p>{{ child_data.age }} months old</p>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="add-button"><a href="{% url 'register_child' guardian.id %}">+</a></button>
+</body>
+</html>

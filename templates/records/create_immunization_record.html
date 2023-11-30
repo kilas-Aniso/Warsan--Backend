@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            font-family: 'Kumbh Sans', sans-serif;
+
+        }
+    </style>
+    <h2> {{ child.first_name }} {{ child.last_name }}</h2>
+
+<form method="POST" action="{% url 'immunization_detail' child_data.child.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload Immunization</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# name: Django Build and Test
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Python Environment
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.9'
+
+#       # - name: Install requirements 
+#       #   run: pip install -r requirements.txt
+#       # - name: Check Syntax 
+#       #   run: pre-commit run --all-files
+        
+#       # - name: Make Migrations  
+#       #   run: |
+#       #     python manage.py makemigrations
+
+#       # - name: Migration
+#       #   run: |
+#       #     python3 manage.py migrate
+
+#       # - name: Run server
+#       #   run: |
+#       #     python3 manage.py runserver
+
+#       # - name: Run Tests
+#       #   run: |
+#       #     python manage.py test

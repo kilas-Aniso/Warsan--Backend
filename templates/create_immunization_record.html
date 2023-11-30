@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+<head>
+    <title>Create Immunization Record</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #F4F4F4;
+        }
+
+        h2 {
+            color: #1175D2;
+
+        }
+
+        form {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            margin: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form button[type="submit"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #1175D2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .vaccine-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vaccine-form label {
+            font-weight: 200;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .vaccine-form input[type="date"],
+        .vaccine-form select {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h2>Add Immunization Record</h2>
+        {% csrf_token %}
+        <div class="vaccine-form">
+            {{ form.as_p }}
+            {{ form.vaccineadministration_set.management_form }}
+            {% for formset_form in form.vaccineadministration_set %}
+                {{ formset_form.as_table }}
+            {% endfor %}
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
